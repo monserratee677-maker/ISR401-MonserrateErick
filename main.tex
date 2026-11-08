@@ -1,0 +1,114 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\geometry{margin=2cm}
+\renewcommand{\tablename}{Tabla}
+\renewcommand{\refname}{Referencias}
+
+\title{\textbf{FORM-TL-01: Taller de Tipos de Requisitos}\\
+\large Ingenier\'ia de Requerimientos (ISR-401) -- 4.$^{\circ}$ Nivel ``A''}
+\author{Erick Ariel Monserrate Ochoa \\
+\small Universidad T\'ecnica Estatal de Quevedo (UTEQ)}
+\date{Noviembre de 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Clasificaci\'on de los enunciados}
+En la Tabla \ref{tab:clasificacion} se clasifican los 20 enunciados del caso del Policl\'inico Ribera del Quevedo en sus tres dimensiones: tipo (funcional, calidad o restricci\'on), \'ambito (producto o proceso) y nivel (sistema o software) \cite{pohl2025, iso29148}. En los requisitos de calidad se asigna la caracter\'istica y subcaracter\'istica correspondiente del est\'andar ISO/IEC 25010:2023 \cite{iso25010}.
+
+\textbf{Criterio aplicado en la columna Nivel para restricciones de proceso (E11, E16 y E20):} Se asigna nivel de \textit{Sistema} cuando la regla gobierna el ciclo de vida, plazos o validaci\'on del proyecto completo (que abarca software, quiosco f\'isico y operaci\'on del policl\'inico), como ocurre en E11 y E16; se asigna nivel de \textit{Software} cuando la regla recae exclusivamente sobre la manipulaci\'on del c\'odigo fuente, como ocurre en E20.
+
+\footnotesize
+\begin{longtable}{@{}p{0.8cm}p{3.4cm}p{1.6cm}p{1.5cm}p{8.0cm}@{}}
+\caption{Clasificaci\'on de los requisitos de la plataforma de citas m\'edicas.} \label{tab:clasificacion} \\
+\toprule
+\textbf{C\'od.} & \textbf{Tipo (ISO/IEC 25010)} & \textbf{\'Ambito} & \textbf{Nivel} & \textbf{Justificaci\'on} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{C\'od.} & \textbf{Tipo (ISO/IEC 25010)} & \textbf{\'Ambito} & \textbf{Nivel} & \textbf{Justificaci\'on} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+E01 & Funcional & Producto & Software & Corresponde a la opci\'on en la que el usuario selecciona especialidad, m\'edico, fecha y hora para agendar su turno. \\
+E02 & Funcional & Producto & Software & El aplicativo genera y dispara de forma aut\'onoma un aviso por mensaje de texto un d\'ia antes de la cita. \\
+E03 & Calidad (Eficiencia de desempe\~no / Comportamiento temporal) & Producto & Software & Solicita agilidad en el sistema pero viene planteado de manera ambigua sin un tiempo num\'erico de referencia. \\
+E04 & Funcional & Producto & Software & Otorga al personal de ventanilla la facultad de actualizar en el programa la llegada del paciente. \\
+E05 & Restricci\'on (Tecnol\'ogica) & Producto & Software & Establece de forma obligatoria el uso de Java 21 y PostgreSQL debido a la experiencia del equipo de TI. \\
+E06 & Funcional & Producto & Software & Brinda al m\'edico acceso a su cronograma diario y la acci\'on de cambiar el estado al concluir la consulta. \\
+E07 & Calidad (Seguridad / Confidencialidad e Integridad) & Producto & Software & Pide resguardar la informaci\'on m\'edica sin detallar criterios t\'ecnicos ni umbrales de validaci\'on. \\
+E08 & Restricci\'on (Tecnol\'ogica) & Producto & Software & Fija una condicionante sobre el dispositivo operativo m\'inimo, exigiendo Android 10 o superior para la app. \\
+E09 & Funcional (Regla de negocio) & Producto & Software & El aplicativo eval\'ua el lapso previo a la cancelaci\'on y marca inasistencia si transcurren menos de cuatro horas. \\
+E10 & Calidad (Capacidad de interacci\'on / Operabilidad) & Producto & Software & Exige sencillez de manejo para adultos mayores, omitiendo m\'etricas concretas de tiempo o fallos. \\
+E11 & Restricci\'on (Cronograma) & Proceso & Sistema & Fija un tope temporal de seis meses para la culminaci\'on de todo el proyecto institucional. \\
+E12 & Calidad (Seguridad / Confidencialidad) & Producto & Software & Interrumpe la sesi\'on tras 10 minutos de inactividad para impedir accesos indebidos a datos en pantallas visibles. \\
+E13 & Funcional & Producto & Sistema & Vincula la l\'ogica del software con perif\'ericos f\'isicos de la sala de espera como la pantalla t\'actil y la impresora. \\
+E14 & Calidad (Fiabilidad / Disponibilidad) & Producto & Sistema & Demanda funcionamiento continuo del servicio mediante un enunciado absoluto que carece de verificabilidad. \\
+E15 & Funcional & Producto & Software & Facilita la emisi\'on de un informe mensual de ausentismo clasificado por especialidad para la direcci\'on m\'edica. \\
+E16 & Restricci\'on (Metodol\'ogica) & Proceso & Sistema & Sujeta el proceso de desarrollo a revisiones quincenales obligatorias con la direcci\'on m\'edica. \\
+E17 & Restricci\'on (Legal) & Producto & Sistema & Ordena el acatamiento de la LOPDP \cite{lopdp2021}, incidiendo principalmente en el dise\~no del producto. \\
+E18 & Calidad (Compatibilidad / Interoperabilidad) & Producto & Software & Pide conectividad con la facturaci\'on externa sin fijar pautas de latencia ni tolerancia a errores. \\
+E19 & Calidad (Fiabilidad / Recuperabilidad) & Producto & Sistema & Fija un tiempo l\'imite menor a 30 minutos para levantar el servidor y conservar las citas ante ca\'idas. \\
+E20 & Restricci\'on (Proceso de desarrollo) & Proceso & Software & Obliga a que un miembro del equipo apruebe mediante revisiones el c\'odigo antes de enviarlo a la rama principal. \\
+\end{longtable}
+\normalsize
+
+\section{Cuantificaci\'on de los requisitos de calidad vagos}
+A continuaci\'on se reescriben los cinco requisitos de calidad vagos (E03, E07, E10, E14 y E18) con m\'etrica, unidad y umbral verificables basados en los datos del caso:
+
+\begin{enumerate}
+    \item \textbf{E03 -- Calidad (Eficiencia de desempe\~no / Comportamiento temporal):}
+    Con una carga de 300 usuarios conectados al mismo tiempo (pico esperado los lunes a las 07:00), el tiempo de respuesta de la aplicaci\'on para consultar horarios disponibles o confirmar una reserva ser\'a menor o igual a $2{,}0\text{ segundos}$ en el percentil 95 ($P_{95}$) de las peticiones, medido desde tel\'efonos Android de gama media o baja.
+
+    \item \textbf{E07 -- Calidad (Seguridad / Confidencialidad e Integridad):}
+    Para que cada medida sea verificable por separado, se divide en tres criterios:
+    \begin{enumerate}
+        \item \textbf{E07.1 (Cifrado en reposo -- Confidencialidad):} El $100\%$ de las columnas con datos sensibles de salud almacenadas en PostgreSQL deber\'a cifrarse mediante AES-256.
+        \item \textbf{E07.2 (Cifrado en tr\'ansito -- Confidencialidad e Integridad):} El $100\%$ de las conexiones entre las aplicaciones (web, m\'ovil y quiosco) y el servidor deber\'a realizarse sobre HTTPS utilizando el protocolo TLS 1.3.
+        \item \textbf{E07.3 (Pruebas de vulnerabilidades -- Integridad y Confidencialidad):} Antes del paso a producci\'on, la plataforma deber\'a registrar $0\text{ vulnerabilidades}$ de severidad alta o cr\'itica al ejecutar un an\'alisis automatizado basado en la gu\'ia OWASP Top 10.
+    \end{enumerate}
+
+    \item \textbf{E10 -- Calidad (Capacidad de interacci\'on / Operabilidad):}
+    En pruebas de uso con un grupo de al menos 20 pacientes del policl\'inico mayores de 60 a\~nos que operen la plataforma sin ayuda de un familiar, al menos el $85\%$ deber\'a completar la reserva de una cita en un tiempo m\'aximo de $180\text{ segundos}$ y cometiendo como m\'aximo $1\text{ error}$ de navegaci\'on por intento.
+
+    \item \textbf{E14 -- Calidad (Fiabilidad / Disponibilidad):}
+    Durante el horario de atenci\'on del policl\'inico establecido en el caso (de lunes a s\'abado, de 07:00 a 19:00, es decir, $12\text{ horas}$ diarias durante $26\text{ d\'ias}$ laborales al mes, sumando $18\,720\text{ minutos}$ mensuales de operaci\'on), la plataforma mantendr\'a una disponibilidad mensual mayor o igual al $99{,}5\%$. Calculando el tope de ca\'ida con la f\'ormula $(1 - 0{,}995) \times 12\text{ h} \times 60\text{ min} \times 26\text{ d\'ias}$, el tiempo de inactividad no planificado ser\'a como m\'aximo de $93{,}6\text{ minutos}$ al mes.
+
+    \item \textbf{E18 -- Calidad (Compatibilidad / Interoperabilidad):}
+    En las peticiones que la plataforma env\'ie a la interfaz de servicios web del sistema de facturaci\'on electr\'onica actual para registrar los cobros, se deber\'a alcanzar una tasa de \'exito m\'inima del $99{,}8\%$ en el primer intento y un tiempo de respuesta (latencia de comunicaci\'on con el servicio web externo) menor o igual a $1{,}5\text{ segundos}$ por transacci\'on.
+\end{enumerate}
+
+\section{Comparaci\'on y resoluci\'on de discrepancias}
+Se contrastaron las clasificaciones con el documento del compa\~nero Cristopher Javier Lavayen Bone. Dado que las gu\'ias de trabajo se desarrollan de forma independiente, las coincidencias y divergencias en la interpretaci\'on se discuten y depuran para afinar criterios t\'ecnicos:
+
+\begin{enumerate}
+    \item \textbf{Discrepancia en E12 (Cierre autom\'atico de sesi\'on tras 10 minutos -- Tipo):}
+    En el documento de Cristopher Lavayen, E12 aparece clasificado como \textit{Funcional} bajo el argumento de que describe un comportamiento automatizado del sistema ante la inactividad, mientras que en este trabajo se clasific\'o como \textit{Calidad (Seguridad / Confidencialidad)}. Al analizarlo, se mantiene en \textit{Calidad (Seguridad / Confidencialidad)} debido a que el temporizador act\'ua como un mecanismo t\'ecnico de protecci\'on para evitar la visualizaci\'on no autorizada de historiales de salud en terminales desatendidas.
+
+    \item \textbf{Discrepancia en E10 (Facilidad de uso para adultos mayores -- Nombre de la caracter\'istica):}
+    Lavayen ubic\'o E10 bajo el r\'otulo general de \textit{Calidad (Usabilidad)}, mientras que en este documento se registr\'o como \textit{Calidad (Capacidad de interacci\'on / Operabilidad)}. Se determina que el t\'ermino actual correcto seg\'un la norma ISO/IEC 25010:2023 es \textit{Capacidad de interacci\'on} (en sustituci\'on del concepto antiguo de usabilidad), conservando \textit{Operabilidad} como la subcaracter\'istica evaluable.
+
+    \item \textbf{Discrepancia en E14 y E19 (Disponibilidad y recuperaci\'on ante fallos -- Nivel):}
+    Mientras que en el documento de comparaci\'on ambos requisitos se situaron en el nivel de \textit{Software}, en esta propuesta se asignaron al nivel de \textit{Sistema} (especificando \textit{Fiabilidad / Disponibilidad} en E14 y \textit{Fiabilidad / Recuperabilidad} en E19). Se mantiene el nivel de \textit{Sistema} porque la recuperaci\'on ante ca\'idas del servidor (E19) y la continuidad operativa general (E14) dependen de la infraestructura f\'isica, topolog\'ia de red y respaldos de servidores, superando el alcance estricto del c\'odigo fuente de la aplicaci\'on.
+\end{enumerate}
+
+\section{Declaraci\'on de uso de herramientas de IA como apoyo}
+En cumplimiento de la secci\'on 6 (numeral 8) de la gu\'ia de la actividad, se declara el uso de dos herramientas de IA como apoyo: \textbf{Google Gemini (versi\'on: COMPLETAR)} y \textbf{Claude Sonnet 5.5 (Anthropic)}. Gemini se us\'o para la correcci\'on ortotipogr\'afica, la estructuraci\'on de tablas en \LaTeX{} y la validaci\'on de coherencia frente a la lista de cotejo. Claude se us\'o para preparar la plantilla base de \LaTeX{}, el README y la hoja informativa del SGA, para se\~nalar inconsistencias del documento frente a la r\'ubrica y la gu\'ia, y para orientaci\'on sobre Overleaf y GitHub. Las clasificaciones, justificaciones, requisitos cuantificados y discrepancias fueron elaborados y decididos por m\'i; lo sugerido por las herramientas se verific\'o manualmente contra la norma ISO/IEC 25010:2023 de la biblioteca institucional, los c\'alculos aritm\'eticos y el caso del Policl\'inico Ribera del Quevedo.
+
+\begin{thebibliography}{9}
+\bibitem{pohl2025} K. Pohl, \textit{Requirements Engineering: Fundamentals, Principles, and Techniques}, 2nd ed. Berlin, Heidelberg, Germany: Springer, 2025, ISBN: 978-3-662-69204-2.
+\bibitem{iso29148} ISO/IEC/IEEE, \textit{ISO/IEC/IEEE 29148:2018. Systems and software engineering --- Life cycle processes --- Requirements engineering}, International Standard, 2018.
+\bibitem{iso25010} ISO/IEC, \textit{ISO/IEC 25010:2023. Systems and software engineering --- Systems and software Quality Requirements and Evaluation (SQuaRE) --- Product quality model}, International Standard, 2023.
+\bibitem{lopdp2021} Asamblea Nacional del Ecuador, \textit{Ley Org\'anica de Protecci\'on de Datos Personales}, Registro Oficial, Quinto Suplemento No. 459, 26 de mayo de 2021.
+\end{thebibliography}
+
+\end{document}
