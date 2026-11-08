@@ -1,6 +1,6 @@
 # ISR401-MonserrateErick
 
-Repositorio personal de Ingeniería de Requerimientos (ISR-401), UTEQ.
+Repositorio personal de Ingeniería de Requerimientos , UTEQ.
 
 ## FORM-TL-01: Taller de tipos de requisitos
 
