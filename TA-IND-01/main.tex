@@ -109,41 +109,43 @@ La cláusula 5.2.7~\cite{iso29148} indica que se deben evitar las palabras subje
 \label{sec:evidencias}
 Dado que la aplicación bloquea las capturas de pantalla en todas sus vistas, las evidencias se obtuvieron fotografiando la pantalla con otro dispositivo, a excepción de la Figura~\ref{fig:comprobante}, cuya imagen fue exportada directamente mediante la opción «Compartir comprobante» de la propia aplicación. Las Figuras~\ref{fig:auth}, \ref{fig:tarifa}, \ref{fig:comprobante}, \ref{fig:historial} y \ref{fig:bancos} respaldan los requisitos de la Sección~\ref{sec:requisitos}. El identificador «ERICK5312» corresponde al usuario del autor. Los datos de terceros y los números de cuenta fueron cubiertos.
 
-\begin{figure}[H]
+% Las fotografias ya estan orientadas verticalmente en la carpeta figuras.
+% keepaspectratio evita deformaciones y limita el ancho y la altura.
+\begin{figure}[htbp]
   \centering
   \begin{minipage}[t]{0.48\textwidth}
     \centering
-    \includegraphics[angle=-90,height=6.5cm]{figuras/autenticacion.jpeg}
+    \includegraphics[width=\linewidth,height=6.5cm,keepaspectratio]{figuras/autenticacion.jpeg}
     \caption{Inicio de sesión con autenticación biométrica.}
     \label{fig:auth}
   \end{minipage}\hfill
   \begin{minipage}[t]{0.48\textwidth}
     \centering
-    \includegraphics[height=6.5cm]{figuras/monto_tarifa.jpeg}
+    \includegraphics[width=\linewidth,height=6.5cm,keepaspectratio]{figuras/monto_tarifa.jpeg}
     \caption{Pantalla del monto con el costo de \$0{,}41.}
     \label{fig:tarifa}
   \end{minipage}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
   \begin{minipage}[t]{0.48\textwidth}
     \centering
-    \includegraphics[height=6.5cm]{figuras/comprobante_exitoso.jpeg}
+    \includegraphics[width=\linewidth,height=6.5cm,keepaspectratio]{figuras/comprobante_exitoso.jpeg}
     \caption{Comprobante de transferencia exitosa.}
     \label{fig:comprobante}
   \end{minipage}\hfill
   \begin{minipage}[t]{0.48\textwidth}
     \centering
-    \includegraphics[height=6.5cm]{figuras/movimientos_historial.jpeg}
+    \includegraphics[width=\linewidth,height=6.5cm,keepaspectratio]{figuras/movimientos_historial.jpeg}
     \caption{Historial de movimientos de la cuenta.}
     \label{fig:historial}
   \end{minipage}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htbp]
   \centering
-  \includegraphics[angle=-90,height=6.5cm]{figuras/bancos_spi.jpeg}
+  \includegraphics[width=0.48\textwidth,height=7cm,keepaspectratio]{figuras/bancos_spi.jpeg}
   \caption{Lista de bancos destino con buscador.}
   \label{fig:bancos}
 \end{figure}
